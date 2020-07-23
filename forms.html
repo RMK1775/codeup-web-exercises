@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register With Us</title>
+</head>
+<body>
+<main>
+        <form method="POST" action="https://request-inspector.glitch.me/">
+            <fieldset style="border-color: royalblue">
+                <legend><h2>Welcome!</h2></legend>
+                <section>
+                    <label for="email">
+                        Email <input type="text" id="email" name="email" required="required" placeholder="Please enter your email address">
+                    </label>
+                    <label for="password">
+                        Password <input type="password" id="password" name="password" required="required" placeholder="enter password">
+                     </label>
+                </section>
+                <br>
+                <section>
+                    <label for="bio">
+                        Bio<br>
+                        <textarea id="bio" name="bio" placeholder="Please tell us a bit about yourself"></textarea>
+                    </label>
+                </section>
+            </fieldset>
+<!--            <hr>-->
+            <fieldset style="border-color: royalblue">
+                <legend><h3>Glad you're here!</h3></legend>
+                <section>
+                    How did you hear about us?<br>
+                    <input type="radio" id="billboard" name="how_heard" value="billboard">Billboard<br>
+                    <input type="radio" id="radio_ad" name="how_heard" value="radio advertisement">Radio Advertisement<br>
+                    <input type="radio" id="internet_ad" name="how_heard" value="internet advertisement">Internet Advertisement<br>
+                    <input type="radio" id="other" name="how_heard" value="other">Other
+<!--                    <label for="billboard">-->
+<!--                        Billboard <input id="billboard" type="checkbox" name="how_heard" value="billboard">-->
+<!--                    </label>-->
+<!--                    <label for="radio_ad">-->
+<!--                        Radio Ad <input id="radio_ad" type="checkbox" name="how_heard" value="radio_ad">-->
+<!--                    </label>-->
+<!--                    <label for="internet_ad">-->
+<!--                        Internet Ad <input id="internet_ad" type="checkbox" name="how_heard" value="internet_ad">-->
+<!--                    </label>-->
+<!--                    <label for="other">-->
+<!--                        Other <input id="other" type="checkbox" name="how_heard" value="other">-->
+<!--                    </label>-->
+                </section>
+                <br>
+                <section>
+                    What browser are you using?
+                    <select name="users_browser">
+                        <option value="chrome">Chrome</option>
+                        <option value="firefox">Firefox</option>
+                        <option value="edge">Edge</option>
+                        <option value="opera">Opera</option>
+                        <option value="safari">Safari</option>
+                        <option value="vivaldi">Vivaldi</option>
+                        <option value="duckduckgo">DuckDuckGo</option>
+                        <option value="other">Other</option>
+                    </select>
+                </section>
+<!--                <br>-->
+            </fieldset>
+            <br>
+            <input type="submit">
+        </form>
+</main>
+
+</body>
+</html>
