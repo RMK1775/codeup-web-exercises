@@ -1,4 +1,73 @@
-.fancy-header {
-    color: purple;
+h1, h2, h3, h4, h5, h6 {
+    color: silver;
     text-decoration: underline;
+}
+
+header {
+    text-align: center;
+}
+
+hr {
+    color: grey;
+}
+
+.page-pic {
+    background-image: url("../img/io.jpg");
+}
+
+.back-color {
+    background-color: darkolivegreen;
+    color: #F5DEB3;
+}
+
+ul {
+    list-style-type: none;
+}
+
+ul>li:before {
+    content: '\1F680';
+    margin-left: -20px;
+    margin-right: 10px;
+}
+
+body {
+    font-family: 'Merienda', cursive, Serif;
+}
+
+a:link {
+    color:red;
+}
+
+a:visited {
+    color:white;
+}
+
+a:hover {
+    color:blue;
+}
+
+a:active {
+    color:green;
+}
+
+table {
+    background-color: lightsteelblue;
+    column-width: fit-content;
+}
+
+th, td, tr {
+    padding: 4px;
+    border: 2px red;
+}
+tr:nth-child(even) {
+    background-color: gainsboro;
+}
+
+th, td {
+    font-size: 1.5em;
+    color: chocolate;
+}
+
+footer {
+    text-align: right;
 }

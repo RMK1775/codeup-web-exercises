@@ -1,0 +1,73 @@
+:root{
+    --bg-info-color: lightsteelblue;
+    --text-info-color: royalblue;
+    --bg-success-color: darkseagreen;
+    --text-success-color: darkgreen;
+    --bg-warning-color: lightyellow;
+    --text-warning-color: chocolate;
+    --bg-error-color: indianred;
+    --text-error-color: darkred;
+}
+body, html {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Ubuntu, sans-serif;
+}
+.message {
+    border-radius: 10px;
+    border: lightgrey 1px solid;
+    padding: 10px;
+    margin: 10px 0px 10px;
+}
+.message-info{
+    background-color: var(--bg-info-color);
+    color: var(--text-info-color);
+}
+
+.message-success{
+    background-color: darkseagreen;
+    color: var(--text-success-color)
+}
+
+.bg-warning{
+    background-color: lightyellow;
+    border-radius: 10px;
+    border: lightgrey 1px solid;
+    padding: 10px;
+    margin: 10px 0px 10px;
+}
+
+.text-warning{
+    color: chocolate;
+}
+
+.bg-error{
+    background-color: indianred;
+    border-radius: 10px;
+    border: lightgrey 1px solid;
+    padding: 10px;
+    margin: 10px 0px 10px;
+}
+
+.text-error{
+    color: darkred;
+}
+/*
+Bonus: Use CSS variables for the colors of your messages.
+
+Use the following naming convention for the variables
+ bg-info, text-info, bg-success, text-success, etc.
+ */
+/*
+:root{
+    --bg-info: #cdeeff;
+    --text-info: royalblue;
+    repeat for each
+
+}
+.message-info {
+    background-color: var(--blue-bg-color);
+}
+ */
