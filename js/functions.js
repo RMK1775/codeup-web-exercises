@@ -94,8 +94,8 @@ alert("We hope you enjoyed your meal. Based on your answers, the tip would be $"
  *
  * Example:
  * > var originalPrice = 100;
- * > var dicountPercent = .2; // 20%
- * > applyDiscount(originalPrice, dicountPercent) // 80
+ * > var discountPercent = .2; // 20%
+ * > applyDiscount(originalPrice, discountPercent) // 80
  *
  * > applyDiscount(45.99, 0.12) // 40.4712
  */
