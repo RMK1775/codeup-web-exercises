@@ -28,24 +28,72 @@
 //                  will contain a different color every time the page loads)
 var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
 var randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+function analyzeColor(input){
+    if (input === 'red'){
+        console.log("Red is the color of the road I walk.")
+    }else if (input === 'orange') {
+        console.log("Orange is both a fruit and a color.")
+    }else if (input === 'yellow') {
+        console.log("Yellow is the color of caution.")
+    }else if (input === 'green') {
+        console.log("Green is at it's richest on the hills of Ireland.")
+    }else if (input === 'blue') {
+        console.log("Blue is often the color of Father Sky.")
+    }else if (input === 'indigo') {
+        console.log("Indigo falls between dark blue and purple")
+    }else if(input === 'violet') {
+        console.log("Violet is a darker shade of purple.")
+    }else{
+        console.log("Sorry, you have not entered one of the recognized colors.")
+    }
+}
 /**
  * TODO:
  * Pass the `randomColor` variable to your function and console.log the results.
  * You should see a different message every time you refresh the page
  */
-
+analyzeColor(randomColor);
 /**
  * TODO:
  * Refactor your above function to use a switch-case statement
  */
-
+function analyzeColorTwo(input){
+    switch (input) {
+        case 'red':
+            console.log("Red is the color of the road I walk.");
+            break;
+        case 'orange':
+            console.log("Orange is both a fruit and a color.");
+            break;
+        case 'yellow':
+            console.log("Yellow is the color of caution.");
+            break;
+        case 'green':
+            console.log("Green is at it's richest on the hills of Ireland.");
+            break;
+        case 'blue':
+            console.log("Blue is often the color of Father Sky.");
+            break;
+        case 'indigo':
+            console.log("Indigo falls between dark blue and purple");
+            break;
+        case 'violet':
+            console.log("Violet is a darker shade of purple.");
+            break;
+        default:
+            console.log("Sorry, you have not entered one of the recognized colors.")
+            break;
+    }
+}
 /**
  * TODO:
  * Prompt the user for a color when the page loads, and pass the input from the
  * user to your `analyzeColor` function. Alert the return value from your
  * function to show it to the user.
  */
-
+var userColor = prompt("Please enter a color:");
+analyzeColorTwo(userColor);
 /* ########################################################################## */
 
 /**
@@ -67,8 +115,30 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * Test your function by passing it various values and checking for the expected
  * return value.
  */
+function calculateTotal() {
+    var luckyNumber = Math.floor(Math.random() * 6);
+    console.log(luckyNumber);
+    var purchaseTotal = prompt("How much is today's total?");
+    var discount;
+    switch (luckyNumber) {
+        case 5: discount = 1;
+        break;
+        case 4: discount = .5;
+        break;
+        case 3: discount = .35;
+        break;
+        case 2: discount = .25;
+        break;
+        case 1: discount = .1;
+        break;
+        default: discount = 0;
+        break;
+    }
+    return alert("Your promo total is $" + (purchaseTotal - (purchaseTotal * discount)).toFixed(2));
+}
 
-/**
+calculateTotal();
+    /**
  * TODO:
  * Uncomment the line below to generate a random number between 0 and 6.
  * Prompt the user for their total bill, then use your `calculateTotal` function
@@ -94,7 +164,22 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * Can you refactor your code to use functions?
  * HINT: The way we prompt for a value could be improved
  */
+var usersIn = confirm("Would you like to enter a number?");
+if (!usersIn){
+    alert("Understood. Have a nice day.");
+}else{
+    var usersChoice = parseInt(prompt("Please enter a number (numerical digits only):"));
+}
 
-
+if (typeof usersChoice === "number"){
+    processChoice(usersChoice);
+}else{
+    alert("You have not entered a number. Take care.");
+}
+function processChoice(input){
+    alert((input % 2 == 0) ? "The number is even!" : "The number is odd!");
+    alert("Your number plus one hundred = " + (input + 100) + ".");
+    alert((input < 0) ? "Your number is negative. Do you really need that in your life" : "Your number is positive!");
+}
 
 })();
