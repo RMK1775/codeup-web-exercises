@@ -130,6 +130,7 @@ function calculateTotal() {
         case 2: discount = .25;
         break;
         case 1: discount = .1;
+        //0.9 would work and eliminate the subtraction in the return
         break;
         default: discount = 0;
         break;
@@ -179,7 +180,7 @@ if (typeof usersChoice === "number"){
 function processChoice(input){
     alert((input % 2 == 0) ? "The number is even!" : "The number is odd!");
     alert("Your number plus one hundred = " + (input + 100) + ".");
-    alert((input < 0) ? "Your number is negative. Do you really need that in your life" : "Your number is positive!");
+    alert((input < 0) ? "Your number is negative. Do you really need that in your life?" : "Your number is positive!");
 }
 
 })();

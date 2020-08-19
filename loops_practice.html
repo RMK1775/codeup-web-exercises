@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loop practice</title>
+</head>
+<body>
+<h3>Loop Practice</h3>
+<script>
+    //while loops
+    var i = 0;
+    while (i < 10){
+        console.log('loop #' + i);
+        i++;
+    }
+    var j = 10;
+    while (j < 10){
+        console.log('loop #' + j);
+        j++;
+    }
+
+    //do-while loop
+    var k = 10;
+    do{
+        console.log('Loop #' + k);
+        k++
+    }while (k < 10);
+
+    var a = 50;
+    do{
+        console.log("Loop #: " + a);
+        a--;
+    }while (a >= 40);
+
+    //for loop
+    for (var l = 3; l <= 30; l +=3){
+        console.log("l's value is now " + l);
+    }
+
+    for (var n = 0, p = 5; n < 6; n++, p+=5){
+        console.log("The p variable's value is now " + p);
+    }
+
+    //use of break
+    let breakNumber = 4;
+    let z = 1;
+    while(z <= 10){
+        console.log(z);
+        z++;
+        if(z > breakNumber){
+            break;
+        }
+    }
+
+    //use of continue
+    for (var b = 1; b < 50; b++){
+        if(b % 2 !== 0){
+            continue;
+        }
+        console.log(b)
+    }
+
+    for (var c = 3; c <= 100; c++){
+        if(c % 3 !== 0){
+            continue;
+        }
+        console.log(c);
+    }
+
+    function exampleOfReturningFromLoop() {
+        let output = ''
+        for (let i=0; i < 10; i++) {
+            output += "iteration " + i
+            if (i !== 9) output += '\n'
+        }
+        return output;
+    }
+    console.log(exampleOfReturningFromLoop)
+    console.log(exampleOfReturningFromLoop())
+
+</script>
+</body>
+</html>
