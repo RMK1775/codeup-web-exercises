@@ -63,8 +63,8 @@
         console.log(input[1] + "\n");
     }
     second(numbers);
-    function third(input){
-        console.log(input[2]);
+    function last(input){
+        console.log(input[numbers.length -1]);
     }
-    third(numbers);
+    last(numbers);
 })();
