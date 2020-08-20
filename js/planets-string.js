@@ -27,4 +27,5 @@
          return '<li>' + planet + '</li>';
      }).join('') + '</ul>';
      console.log(planetsList);
+
 })();
