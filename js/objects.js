@@ -28,6 +28,7 @@
         return "Hello from " + person.firstName + " " + person.lastName;
     };
     console.log(person.sayHello());
+    console.log("\n");
     /** TODO:
      * HEB has an offer for the shoppers that buy products amounting to
      * more than $200. If a shopper spends more than $200, they get a 12%
@@ -62,7 +63,7 @@
         }
         console.log(shopper.name + " has spent $" + shopper.amount.toFixed(2) + " and has earned a discount of $" + discountedAmount + " for a final total of $" + finalAmount);
         })
-
+console.log("\n");
 
     /** TODO:
      * Create an array of objects that represent books and store it in a
@@ -111,7 +112,20 @@
                 firstName: "Thomas",
                 lastName: "Paine"
             }
-        }
+        },
+        createBook: function(){
+        let book = {
+                    title: "",
+                    author: {
+                        firstName: "",
+                        lastName: ""
+                    }
+                }
+                book.title = prompt('What is the title of the book?');
+                book.firstName = prompt("What is the author's first name?");
+                book.lastName = prompt("What is the author's last name?");
+                console.log("Title: " + book.title + " Author: " + book.firstName + " " + book.lastName);
+    }
     ];
     /**
      * TODO:
@@ -137,7 +151,13 @@
      *      ---
      *      ...
      */
-
+console.log("Our current book inventory is:");
+books.forEach(function(book, i){
+    console.log("Book #: " + (i + 1));
+    console.log("Title: " + book.title);
+    console.log("Author: " + book.author.firstName + " " + book.author.lastName)
+    console.log("\n");
+})
     /**
      * Bonus:
      * - Create a function named `createBook` that accepts a title and author
@@ -148,7 +168,26 @@
      *   outputs the information described above. Refactor your loop to use your
      *   `showBookInfo` function.
      */
-    //In class exercise
+/*First part of bonus before refactor
+    // function createBook(){
+    //     let book = {
+    //         title: "",
+    //         author: {
+    //             firstName: "",
+    //             lastName: ""
+    //         }
+    //     }
+    //     book.title = prompt('What is the title of the book?');
+    //     book.firstName = prompt("What is the author's first name?");
+    //     book.lastName = prompt("What is the author's last name?");
+    //     console.log("Title: " + book.title + " Author: " + book.firstName + " " + book.lastName);
+    // }
+    //
+    createBook();
+
+ */
+
+/*In class exercise
     // let bigRedCouch = {
     //     make: "Harley-Davidson",
     //     model: "FLHTCU",
@@ -158,5 +197,5 @@
     //     }
     // };
     // bigRedCouch.getGas();
-
+*/
 })();
