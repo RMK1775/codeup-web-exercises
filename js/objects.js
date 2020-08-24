@@ -11,7 +11,7 @@
      *  > console.log(person.firstName) // "Rick"
      *  > console.log(person.lastName) // "Sanchez"
      */
-    var person = {
+    let person = {
         firstName: "The",
         lastName: "Gunny"
     };
@@ -41,8 +41,7 @@
      * represents one shopper. Use a foreach loop to iterate through the array,
      * and console.log the relevant messages for each person
      */
-
-    var shoppers = [
+    let shoppers = [
         {name: 'Cameron', amount: 180},
         {name: 'Ryan', amount: 250},
         {name: 'George', amount: 320}
@@ -52,7 +51,7 @@
         const discountRate = 0.12;
         const discountThreshold = 200;
         let discountedAmount = 0;
-        let finalAmount = 0;
+        let finalAmount;
 
         if (shopper.amount >= discountThreshold){
             discountedAmount = (shopper.amount * discountRate).toFixed(2);
@@ -77,35 +76,35 @@
      * > console.log(books[0].author.firstName) // "Douglas"
      * > console.log(books[0].author.lastName) // "Adams"
      */
-    var books = [
+    let books = [
         {
             title: "Necroscope",
             author: {
                 firstName: "Brian",
                 lastName: "Lumley"
             }
-        }
+        },
         {
             title: "Call Sign Chaos",
             author: {
                 firstName: "Jim",
                 lastName: "Mattis"
             }
-        }
+        },
         {
             title: "Code Complete",
             author: {
                 firstName: "Steve",
                 lastName: "McConnell"
             }
-        }
+        },
         {
             title: "Everyday Millionaires",
             author: {
                 firstName: "Chris",
                 lastName: "Hogan"
             }
-        }
+        },
         {
             title: "Common Sense",
             author: {
@@ -149,5 +148,15 @@
      *   outputs the information described above. Refactor your loop to use your
      *   `showBookInfo` function.
      */
+    //In class exercise
+    // let bigRedCouch = {
+    //     make: "Harley-Davidson",
+    //     model: "FLHTCU",
+    //     year: "2014",
+    //     getGas: function () {
+    //         return alert('91 octane or higher!');
+    //     }
+    // };
+    // bigRedCouch.getGas();
 
 })();
