@@ -112,20 +112,7 @@ console.log("\n");
                 firstName: "Thomas",
                 lastName: "Paine"
             }
-        },
-        createBook: function(){
-        let book = {
-                    title: "",
-                    author: {
-                        firstName: "",
-                        lastName: ""
-                    }
-                }
-                book.title = prompt('What is the title of the book?');
-                book.firstName = prompt("What is the author's first name?");
-                book.lastName = prompt("What is the author's last name?");
-                console.log("Title: " + book.title + " Author: " + book.firstName + " " + book.lastName);
-    }
+        }
     ];
     /**
      * TODO:
@@ -151,6 +138,7 @@ console.log("\n");
      *      ---
      *      ...
      */
+console.table(books);
 console.log("Our current book inventory is:");
 books.forEach(function(book, i){
     console.log("Book #: " + (i + 1));
@@ -168,6 +156,25 @@ books.forEach(function(book, i){
      *   outputs the information described above. Refactor your loop to use your
      *   `showBookInfo` function.
      */
+    books.createBook = function (){
+        let newBook = {
+            title: prompt('What is the title of the book?'),
+            author: {
+                firstName: prompt("What is the author's first name?"),
+                lastName: prompt("What is the author's last name?")
+            }
+        };
+        books.push(newBook);
+    }
+    books.createBook();
+    console.log("\n");
+    function showBookInfo(book, i){
+        console.log("Book #: " + (i + 1));
+        console.log("Title: " + book.title);
+        console.log("Author: " + book.author.firstName + " " + book.author.lastName)
+        console.log("\n");
+    }
+    books.forEach(showBookInfo);
 /*First part of bonus before refactor
     // function createBook(){
     //     let book = {
