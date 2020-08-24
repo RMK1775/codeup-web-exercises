@@ -144,7 +144,7 @@ books.forEach(function(book, i){
     console.log("Book #: " + (i + 1));
     console.log("Title: " + book.title);
     console.log("Author: " + book.author.firstName + " " + book.author.lastName)
-    console.log("\n");
+    console.log("---");
 })
     /**
      * Bonus:
