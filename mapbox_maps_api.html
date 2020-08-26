@@ -8,5 +8,15 @@
 </head>
 <body>
 
+<div id='map' style='width: 400px; height: 300px;'></div>
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1Ijoicm1rZW5kYWxsIiwiYSI6ImNrZWFzYzJkZTAxdWEydG4xd3Y2bGNpbjMifQ.E008d3LYeAK5OU9lFe308w';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/satellite-streets-v11', // stylesheet location
+        center: [-98.4916, 29.4252], // starting position [lng, lat]
+        zoom: 10 // starting zoom
+    });
+</script>
 </body>
 </html>
