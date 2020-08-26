@@ -7,6 +7,7 @@
 <body>
 
 <h1 id="main-header">Hello World!</h1>
+<button id="btn1">Know what?</button>
 <ul>
     <li data-dbid="1">Item 1</li>
     <li data-dbid="2">Item 2</li>
@@ -14,7 +15,9 @@
     <li data-dbid="4">Item 4</li>
     <li data-dbid="5">Item 5</li>
 </ul>
+<button id="btn3">Stripes anyone?</button>
 <h2 id="sub-header">Hello Again.</h2>
+<button id="btn2">Adele?</button>
 <p class="sub-paragraph">
     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
@@ -24,7 +27,7 @@
     pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
     culpa qui officia deserunt mollit anim id est laborum.
 </p>
-
+<button id="btn4">And so it ends</button>
 <script>
     (function() {
         "use strict";
@@ -32,19 +35,29 @@
         var mainHeader = document.getElementById('main-header');
 
         // TODO: Set inner html of mainHeader to "JavaScript is Cool"
-        mainHeader.innerHTML = 'Javascript is Cool'
+        //DOM events exercise Button 1
+        var firstButton = function (event){
+            mainHeader.innerHTML = '<em>Javascript is Cool</em>';
+        }
+        document.getElementById('btn1').addEventListener('click', firstButton)
         // TODO: Uncomment the next line and get the sub header element by id
         var subHeader = document.getElementById('sub-header');
 
         // TODO: Set the text color of subHeader to blue
-        subHeader.style.color = 'blue'
+        var secondButton = function (event){
+            subHeader.style.color = 'blue';
+        }
+        document.getElementById('btn2').addEventListener('click', secondButton)
         // TODO: Uncomment the next line and get all list items
         var listItems = document.getElementsByTagName('li');
 
         // TODO: Set text color on every other list item to grey
-        for(let i = 0; i < listItems.length; i++){
-            if(i % 2 != 0) listItems[i].style.color = 'grey'
+        var thirdButton = function (event) {
+            for (let i = 0; i < listItems.length; i++) {
+                if (i % 2 != 0) listItems[i].style.color = 'grey'
+            }
         }
+        document.getElementById('btn3').addEventListener('click', thirdButton)
         // TODO: Set text color of li with dbid = 1 to blue
         for(let i = 0; i < listItems.length; i++){
             let dbId = listItems[i].getAttribute('data-dbid');
@@ -57,7 +70,10 @@
         var subParagraphs = document.getElementsByClassName('sub-paragraph');
 
         // TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
-        subParagraphs[0].innerText = 'Mission Accomplished!'
+        var fourthButton = function (event) {
+            subParagraphs[0].innerText = 'Mission Accomplished!'
+        }
+        document.getElementById('btn4').addEventListener('click', fourthButton)
     })();
 </script>
 </body>
