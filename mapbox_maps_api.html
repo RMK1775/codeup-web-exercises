@@ -7,10 +7,10 @@
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
 </head>
 <body>
-
+<script src="js/keys.js"></script>
 <div id='map' style='width: 400px; height: 300px;'></div>
 <script>
-    mapboxgl.accessToken = 'pk.eyJ1Ijoicm1rZW5kYWxsIiwiYSI6ImNrZWFzYzJkZTAxdWEydG4xd3Y2bGNpbjMifQ.E008d3LYeAK5OU9lFe308w';
+    mapboxgl.accessToken = MAPBOX_TOKEN_1;
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/satellite-streets-v11', // stylesheet location
