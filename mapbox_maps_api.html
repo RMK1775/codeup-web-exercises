@@ -3,20 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Mapbox Exercises</title>
-    <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
 </head>
 <body>
+<div id='map' style='width: 800px; height: 600px;'></div>
 <script src="js/keys.js"></script>
-<div id='map' style='width: 400px; height: 300px;'></div>
-<script>
-    mapboxgl.accessToken = MAPBOX_TOKEN_1;
-    var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/satellite-streets-v11', // stylesheet location
-        center: [-98.4916, 29.4252], // starting position [lng, lat]
-        zoom: 10 // starting zoom
-    });
-</script>
+<script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+<script src="js/maps.js"></script>
 </body>
 </html>
