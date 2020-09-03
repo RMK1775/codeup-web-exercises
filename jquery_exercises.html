@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample JQuery page</title>
+</head>
+<body>
+<h2 id="codeup">Hello Codeup</h2>
+<p id="p1">JQuery is cool</p>
+<input id="input" type="text">
+<button id="btn">Click</button>
+<section id="output"></section>
+
+<!--Let the JAVA begin-->
+<script src="js/jquery-2.2.4.min.js"></script>
+
+<script>
+    //  IIFE: protect the variables from global scope
+    (function(){
+        //No wishy-washy
+        "use strict";
+        //Launches the code within once the page loads
+        $().ready(function(){
+        //Example
+            $("#output").html("<h2>Hello World</h2>");
+            alert("The DOM has finished loading.")
+            //Gets the html content from the id codeup
+            var contents = $('#codeup').html();
+            //Changes the text within the tags of the id codeup
+            $('#codeup').html('The Change');
+            //Fills the alert message with what was gotten
+            alert(contents);
+            //Displays the content between the tags for id p1
+            alert($('#p1').html())
+            //Changes the content between the tags for id p1
+            $('#p1').html('JQuery Rocks!');
+        })
+    })();
+</script>
+</body>
+</html>
