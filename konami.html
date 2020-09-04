@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Konami Code</title>
+</head>
+<body>
+<h1>Konami Code</h1>
+<p id="freeLives"></p>
+<div id="codeCorrect"></div>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script>
+    (function() {
+        "use strict";
+        $().ready(function(){
+            let keyPresses = '';
+            let konamiCode = "3838404037393739666513";
+
+            $(document).keyup(function (event){
+                keyPresses = keyPresses.concat(event.keyCode);
+
+                console.log("keyPresses now: " + keyPresses);
+
+                if(keyPresses === konamiCode) {
+                    $('#freeLives').html("<strong>You have added 30 lives!!</strong>");
+                    $('#codeCorrect').html('<img src="https://i.pinimg.com/474x/f1/cb/9c/f1cb9c91cf5322233c5bc976030cfa9b.jpg">')
+                }
+            });
+
+        })
+    })();
+</script>
+</body>
+</html>
+
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>Konami Code</title>-->
+<!--</head>-->
+<!--<body class="body">-->
+<!--<div><img class="hearts" style="margin-top:1em; margin-left: 2em; width:3%" src="img/8bit-heart2.png" alt="heart"></div>-->
+<!--<script src="js/jquery.js"></script>-->
+<!--<script>-->
+<!--    "use strict";-->
+<!--    $('body').css({-->
+<!--        'background-image': 'url("img/shovel-knight.gif")', 'height': '760px',-->
+<!--        'width': '1000px', 'background-repeat': 'no-repeat'-->
+<!--    })-->
+<!--    var code = [];-->
+<!--    $(document).keyup(function (event) {-->
+<!--        var konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13];-->
+<!--        code.push(event.keyCode)-->
+<!--        console.log(code)-->
+<!--        for (var i = 0; i <= code.length - 1; i++)-->
+<!--            if (code[i] === konamiCode[i]) {-->
+<!--                if (code[i] === konamiCode[10]) {-->
+<!--                    alert("You have gained 7 hearts!")-->
+<!--                    var displayHearts = 6;-->
+<!--                    var interval = 750;-->
+<!--                    var intervalID = setInterval(function updateTimer() {-->
+<!--                        if (displayHearts != 0) {-->
+<!--                            $('div').append('<img class="hearts" style="margin-top:1em; margin-left: .25em; width:3%" src="img/8bit-heart2.png" alt="heart">');-->
+<!--                        }-->
+<!--                        else if (displayHearts == 0) {-->
+<!--                            var audio = new Audio()-->
+<!--                            audio.src = 'audio/achievement1.wav'-->
+<!--                            audio.play()-->
+<!--                            code = []-->
+<!--                            clearTimeout(intervalID)-->
+<!--                        }-->
+<!--                        displayHearts&#45;&#45;;-->
+<!--                    }, interval)-->
+<!--                }-->
+<!--            } else {-->
+<!--                code = []-->
+<!--            }-->
+<!--    });-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+<!--Cory's take-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>Konami Code</title>-->
+<!--</head>-->
+<!--<style>-->
+<!--    h2 {-->
+<!--        background-color: #e21111;-->
+<!--        color: #ffffff;-->
+<!--        font-size: 50px;-->
+<!--        text-align: center;-->
+<!--        margin: 0;-->
+<!--    }-->
+<!--    .marioBroGif {-->
+<!--        height: 500px;-->
+<!--        width: 500px;-->
+<!--        margin-top: 6px;-->
+<!--    }-->
+<!--    div {-->
+<!--        text-align: center;-->
+<!--    }-->
+<!--</style>-->
+<!--<body id="backgroundImage">-->
+<!--<h1>Konami Code</h1>-->
+<!--<h2 class="winAlert">YOU HAVE ADDED 30 LIVES!!!</h2>-->
+<!--<div class="winAlert">-->
+<!--<img class="marioBroGif" src="video/mariobro.gif">-->
+<!--</div>-->
+<!--<div class="loseAlert">-->
+<!--    <h2>SORRY, TRY AGAIN</h2>-->
+<!--    <img src="video/marioLose.gif">-->
+<!--</div>-->
+<!--<script src="https://code.jquery.com/jquery-2.2.4.min.js"-->
+<!--        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>-->
+<!--<script>-->
+<!--    (function () {-->
+<!--        "use strict";-->
+<!--        $().ready(function () {-->
+<!--    $("#backgroundImage").css("background-image", "url('img/superMarioBackground.jpg')");-->
+<!--    $(".winAlert").hide();-->
+<!--    $(".loseAlert").hide();-->
+<!--    $(document).keyup(function(event){-->
+<!--        console.log(event.keyCode);-->
+<!--    });-->
+<!--    function konamiDecoder() {-->
+<!--        var userInput = ''-->
+<!--        var code = "3838404037393739666513"-->
+<!--        var audio = new Audio('audio/smb_powerup.wav');-->
+<!--        var audioLose = new Audio('audio/smb_gameover.wav')-->
+<!--        $(document).keydown(function () {-->
+<!--            userInput += ("" + event.keyCode);-->
+<!--            if (userInput === code) {-->
+<!--                audio.play();-->
+<!--                $(".winAlert").show();-->
+<!--            } else if (userInput.length > 22){-->
+<!--                audioLose.play()-->
+<!--                $(".loseAlert").show();-->
+<!--            }-->
+<!--        });-->
+<!--    }-->
+<!--    konamiDecoder();-->
+<!--        });-->
+<!--    })();-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+

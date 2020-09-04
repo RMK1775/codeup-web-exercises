@@ -5,14 +5,26 @@
     <title>Sample JQuery page</title>
 </head>
 <body>
-<h2 id="codeup">Hello Codeup</h2>
-<p id="p1">JQuery is cool</p>
-<input id="input" type="text">
-<button id="btn">Click</button>
-<section id="output"></section>
+<div id="upTop" class="parental">
+    <h1 id="bigHead" class="divider">Hello Codeup</h1>
+    <p id="p1" class="gab">Io Cohort</p>
+</div>
+<div id="mainTalk" class="parental">
+    <h2 id="subject" class="divider">What we've covered</h2>
+    <ul id="topics" class="contentList">
+        <li id="html" class="codeup">HTML</li>
+        <li id="css" class="codeup">CSS</li>
+        <li id="js" class="codeup">Javascript</li>
+        <li id="mapbox" class="codeup">Mapbox</li>
+    </ul>
+
+    <!--<input id="input" type="text">-->
+    <!--<button id="btn">Click</button>-->
+    <!--<section id="output"></section>-->
+</div>
 
 <!--Let the JAVA begin-->
-<script src="js/jquery-2.2.4.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
 <script>
     //  IIFE: protect the variables from global scope
@@ -21,7 +33,32 @@
         "use strict";
         //Launches the code within once the page loads
         $().ready(function(){
-        //Example
+            //alert($('#bigHead').html());
+            //alert($('#subject').html());
+            //$('.codeup').css('border', '1px solid red');
+            // $('li').css('font-size', '20px')
+            // $('li, h1, p').css('box-sizing', 'content-box')
+            // $('li, h1, p').css('background', 'yellow')
+            let bg_color;
+            $('h1').click(function() {
+                $(this).css('background', 'grey');
+            });
+            $('p').dblclick(function(e){
+                $(this).css('font-size', '18px')
+            })
+            $('li').hover(
+
+                function() {
+                    bg_color = $(this).css('background-color');
+                    $(this).css('background-color', 'red');
+                },
+                function() {
+                    $(this).css('background-color', bg_color);
+                }
+            )
+
+    /* ---------
+            //Example
             $("#output").html("<h2>Hello World</h2>");
             alert("The DOM has finished loading.")
             //Gets the html content from the id codeup
@@ -34,6 +71,8 @@
             alert($('#p1').html())
             //Changes the content between the tags for id p1
             $('#p1').html('JQuery Rocks!');
+      --------- */
+
         })
     })();
 </script>
