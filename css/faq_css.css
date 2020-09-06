@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+img {
+    height: 150px;
+    width: auto;
+}
+
+.jumbotron {
+    background-color: #858562;
+    align-items: flex-start;
+}
+
+header h2 {
+    align-content: flex-start;
+    color: white;
+}
+main {
+    background-color: #452B09;
+    padding: 0;
+    color: white;
+}
+
+hr {
+    margin: 0;
+    color: peru;
+    height: 3px;
+    width: 100%;
+}
+
+dd {
+    color: whitesmoke;
+}
+
+.highlighted {
+    background-color: darkkhaki;
+}

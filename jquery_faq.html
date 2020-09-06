@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FAQ National Parks</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <!--    Internal CSS-->
+    <link rel="stylesheet" href="css/faq_css.css">
+</head>
+
+<body class="container align-contents-center">
+
+<header class="row jumbotron mb-0 pb-3 pt-4">
+    <div class=" container col pr-0">
+        <img src="img/nps_social_image_02.jpg">
+    </div>
+    <div class="container col">
+        <h2 class="row header-text">Frequently</h2>
+        <h2 class="row header-text">Asked</h2>
+        <h2 class="row header-text">Questions</h2>
+    </div>
+</header>
+
+<main class="container-fluid">
+
+<dl>
+    <dt class="question">How old is the National Park System?</dt>
+    <dd class="invisible answer">The National Park Service was created by an act signed by President Woodrow Wilson on August 25, 1916. Yellowstone National Park was established by an act signed by President Ulysses S. Grant on March 1, 1872, as the nation's first national park. </dd>
+
+    <dt class="question">What is the origin of the National Park Service arrowhead?</dt>
+    <dd class="invisible answer">The arrowhead was authorized as the official National Park Service emblem by the Secretary of the Interior on July 20, 1951. The components of the arrowhead may have been inspired by key attributes of the National Park System, with the sequoia tree and bison representing vegetation and wildlife, the mountains and water representing scenic and recreational values, and the arrowhead itself representing historical and archeological values. </dd>
+
+    <dt class="question">What is the largest national park site? Smallest?</dt>
+    <dd class="invisible answer">Largest: Wrangell-St. Elias National Park and Preserve, AK, at 13.2 million acres</dd>
+    <dd class="invisible answer">Smallest: Thaddeus Kosciuszko National Memorial, PA, at 0.02 acres</dd>
+
+    <dt class="question">How many people visit the national parks?</dt>
+    <dd class="invisible answer">Total recreation visitors to the national parks in 2019: 327,516,619.</dd>
+
+    <dt class="question">What is the most-visited national park?</dt>
+    <dd class="invisible answer">In 2019, Golden Gate National Recreation Area 15 million visitors.</dd>
+
+    <dt class="question">Can I bring my pet to a national park?</dt>
+    <dd class="invisible answer">Some national parks welcome pets—in developed areas, on many trails and campgrounds, and in some lodging facilities.</dd>
+
+    <dt class="question">Can I bring my service dog to a national park?</dt>
+    <dd class="invisible answer">Yes, service dogs are legally permitted anywhere in a park that visitors can go.</dd>
+
+    <dt class="question">What do I need to know about driving off road in national parks?</dt>
+    <dd class="invisible answer">Before you head out, check with the national parks that you intend to visit. In many national parks, off-road driving is illegal.</dd>
+
+    <dt class="question">How do I apply for a job with the National Park Service?</dt>
+    <dd class="invisible answer">National Park Service jobs, including both permanent and seasonal positions, are listed on <a href="https://www.usajobs.gov/Search?k=%27national%20park%20service%27">USAJOBs.</a></dd>
+
+    <dt class="question">How do I reserve a tour in a park?</dt>
+    <dd class="invisible answer">You can book some park tours through <a href="https://www.recreation.gov/">Recreation.gov</a> such as Pearl Harbor National Memorial, many Mammoth Cave National Park cave tours, Independence National Historical Park tours, and more. Not all parks participate in this reservation service.</dd>
+</dl>
+
+</main>
+<!--Let the JAVA begin-->
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script>
+    "use strict";
+
+    $(document).ready(function (){
+        $('.question').click(function (event){
+            event.preventDefault();
+            $(this).addClass('highlighted').next().toggleClass('invisible');
+        });
+    });
+</script>
+</body>
+</html>
