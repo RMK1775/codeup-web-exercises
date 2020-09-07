@@ -22,9 +22,13 @@
         <h2 class="row header-text">Asked</h2>
         <h2 class="row header-text">Questions</h2>
     </div>
+
 </header>
 
 <main class="container-fluid">
+    <div id="spam">
+        <h1>Would you like to sign up for our newsletter? <span id="nope"> x </span></h1>
+    </div>
 
     <section>
         <dl>
@@ -63,7 +67,7 @@
     <section>
         <article>
             <h3 class="np">Mammoth Cave National Park</h3>
-                <ul>
+                <ul class="npFacts">
                     <li>World's longest known cave system with over 400 miles explored.</li>
                     <li>It is a UNESCO World Heritage site.</li>
                     <li>Underground temps range from mid-50s to low 60s, making it a year round destination.</li>
@@ -73,17 +77,17 @@
         <br>
         <article>
             <h3 class="np">Mesa Verde National Park</h3>
-                <ul>
-                    <li>Largest archeological preserve in the U.S. with over 5000 sites.</li>
+                <ul class="npFacts">
+                    <li>Largest archaeological preserve in the U.S. with over 5000 sites.</li>
                     <li>The sites reflect the changes made over generations by the Anasazi, or ancestral Puebloans.</li>
                     <li>Rediscovered some 600 years after their abandonment by two cowboys tracking strays.</li>
                     <li>Artifacts and dwellings date from 550 - 1300 A.D.</li>
-                </ul>
+                </ulcl>
         </article>
         <br>
         <article>
             <h3 class="np">Redwood National Park</h3>
-                <ul>
+                <ul class="npFacts">
                     <li>The world's tallest tree, Hyperion, is here.</li>
                     <li>Many of the Sequoias within this park are over a thousand years old.</li>
                     <li>It will currently take 250+ years to recover from the logging done in the 19th and 20th centuries.</li>
@@ -94,6 +98,9 @@
     </section>
 
 </main>
+<footer>
+    <h2 id="moreSpam" style="text-align: center">Please register for our site <a href="https://www.nps.gov/subjects/partnerships/partner-with-us.htm">here</a></h2>
+</footer>
 <!--Let the JAVA begin-->
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
@@ -102,6 +109,13 @@
     "use strict";
 
     $(document).ready(function (){
+        $('.npFacts').hide();
+        $('#moreSpam').hide().delay(8000).fadeIn();
+
+        $('#nope').click(function (){
+            $('#spam').hide();
+        });
+
         $('.question').click(function (event){
             event.preventDefault();
             $(this).toggleClass('highlighted').next().toggleClass('card-text invisible', 'answer');
@@ -109,6 +123,7 @@
 
         $('.np').click(function(event){
             event.preventDefault();
+            $(this).next().slideToggle('slow');
             $(this).next().find('li').toggleClass('embolden');
         });
 
