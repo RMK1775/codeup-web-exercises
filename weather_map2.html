@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Map Project</title>
+<!--    Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<!--    Media Queries-->
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+<!--    Mapbox-->
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<!--Blossom friendly-->
+<body class="bg-dark">
+<h1 class="mt-4 bg-primary">A Look At Today</h1>
+<div class="mx-5">
+<!--    Name of Chosen Location-->
+    <h4 id="location" class="text-light font-weight-lighter"></h4>
+<!--    Weather display-->
+    <div id="weatherDisplay" class="d-flex"></div>
+    <hr>
+<!--    Map of Chosen Location-->
+    <div id="map"></div>
+</div>
+<hr>
+<div>
+<!--    Barometric Guidance-->
+    <p><strong>*</strong> Barometric Pressure</p>
+    <ul>
+        <li><strong>High Pressure</strong> If the reading is over 1022.689 mb: Rising or steady pressure means continued fair weather. Slowly falling pressure means fair weather. Rapidly falling pressure means cloudy and warmer conditions.
+        </li>
+        <li><strong>Normal Pressure</strong> If the reading falls between 1022.689 – 1009.144 mb: Rising or steady pressure means present conditions will continue. Slowly falling pressure means little change in the weather. Rapidly falling pressure means that rain is likely, or snow if it is cold enough.</li>
+        <li><strong>Low Pressure</strong> If the reading is under 1009.144 mb: Rising or steady pressure indicates clearing and cooler weather. Slowly falling pressure indicates rain. Rapidly falling pressure indicates a storm is coming.
+        </li>
+    </ul>
+</div>
+<!--JS Sources-->
+<script src="js/keys.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+<script>
+    // IIFE
+    (function (){
+        //Tighten up
+        'use strict';
+
+        //Set Location initial values for page load
+        let coordinates = {
+            lat: 33.441792,
+            lon: -94.0
+        };
+
+
+        function getWeather(lat, lon){
+            // Pull the Weather for Selected Location
+            $.get("https://api.openweathermap.org/data/2.5/onecall?lat=" +lat +"&lon=" +lon +"&exclude=minutely,hourly&units=imperial&appid=" +OPENWEATHERMAP_TOKEN)
+                .done(function(data){
+                    return data;
+                })
+
+
+
+
+            //Set the Map for Selected Location
+            mapboxgl.accessToken = MAPBOX_TOKEN_1;
+            var map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/streets-v11',
+                center: [coordinates.lon, coordinates.lat],
+                zoom: 10
+            });
+        }
+        getWeather(coordinates.lat, coordinates.lon)
+
+        //Build the Weather Display
+        var weatherHTML = '';
+
+
+
+
+
+
+    })();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>
