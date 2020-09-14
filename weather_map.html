@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet'/>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
+    <style>
+        #map {
+            width: 100%;
+            height: 50vh;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand">Weather App</a>
+    <div id="geocoder"></div>
+</nav>
+<main>
+    <h2 id="location" class="m-3"></h2>
+    <div class="d-flex justify-content-around" id="forecast"></div>
+    <div id="map"></div>
+</main>
+
+<script src="js/keys.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+    (function(){
+        'use strict'
+        $(document).ready(function() {
+            // let locationLat;
+            // let locationLong;
+            mapboxgl.accessToken = MAPBOX_TOKEN_1;
+            let map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/streets-v11',
+                center: [-98.4936, 29.4241],
+                zoom: 9
+            });
+
+
+            let marker = new mapboxgl.Marker()
+                .setLngLat([-98.4916, 29.4241])
+                .addTo(map)
+                .setDraggable(true)
+
+            //Adds Navigation controls and disables scroll to zoom
+            map.addControl(new mapboxgl.NavigationControl());
+            map.scrollZoom.disable();
+
+            let geocoder = new MapboxGeocoder({
+                accessToken: mapboxgl.accessToken,
+                placeholder: 'Search Location',
+                mapboxgl: mapboxgl
+            });
+
+            document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+
+            let searchLong = 0;
+            let searchLat = 0;
+            geocoder.on('results', function (results) {
+                searchLong = results.features[0].center[0]
+                searchLat = results.features[0].center[1]
+                console.log(searchLat)
+                console.log(searchLong)
+            })
+            onDragEnd(searchLong, searchLat)
+
+            function convertDay(dt) {
+                let dateTime = new Date(dt).toDateString();
+                return dateTime
+            }
+
+            function renderForecast(locationName, forecast ,index) {
+                const {dt, dt_txt, main, pop, rain, sys, visiblility, weather, wind} = forecast
+                return `
+                 <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">${convertDay(dt_txt)}</h5>
+                        <h5 class="card-title">${weather[0].description}</h5>
+                        <div><img src="http://openweathermap.org/img/wn/${weather[0].icon}.png"></div>
+                        <h6 class="card-subtitle mb-2 text-muted">${main.temp_max} / ${main.temp_min}</h6>
+                        <p class="card-text">${wind.speed}</p>
+                        <p class="card-text">${main.pressure}</p>
+                    </div>
+                </div>
+            `
+
+            }
+
+            function renderForecasts(locationName, forecasts){
+                let html = ' '
+                for(let i = 0; i < forecasts.length; i += 8) {
+                    html += renderForecast(locationName, forecasts[i])
+                }
+                $('#forecast').html(html)
+                $('#location').html(`${locationName} Weather`)
+            }
+
+            function onDragEnd(lon, lat) {
+                let lngLat = marker.getLngLat()
+                $.get("http://api.openweathermap.org/data/2.5/forecast", {
+                    APPID: OPENWEATHERMAP_TOKEN,
+                    lat: lngLat.lat || lat,
+                    lon: lngLat.lng || lon,
+                    units: "imperial",
+                    //cnt: 5
+
+                }).done(function (data) {
+                    console.log(data);
+                    console.log(data.list)
+                    renderForecasts(data.city.name, data.list)
+                    map.flyTo({center: [lngLat.lng || lon, lngLat.lat || lat]})
+                    map.set
+                })
+            }
+            map.on('load', onDragEnd)
+            onDragEnd(searchLong, searchLat)
+            marker.on('dragend', onDragEnd);
+        })
+    })()
+</script>
+</body>
+</html>
