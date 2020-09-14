@@ -15,6 +15,9 @@
             height: 400px;
             width: 100%;
         }
+        .card{
+            max-width: 18rem;
+        }
     </style>
 </head>
 <!--Blossom friendly-->
@@ -22,9 +25,15 @@
 <h1 class="mt-4 bg-primary">A Look At Today</h1>
 <div class="mx-5">
 <!--    Name of Chosen Location-->
-    <h4 id="location" class="text-light font-weight-lighter"></h4>
+    <h4 id="location" class="text-light font-weight-lighter">San Antonio</h4>
 <!--    Weather display-->
-    <div id="weatherDisplay" class="d-flex"></div>
+    <div id="weatherDisplay" class="d-flex">
+        <div id="today" class="card bg-light mb-3 mx-1 text-center flex-column"></div>
+        <div id="day2" class="card bg-light mb-3 mx-1 text-center flex-column"></div>
+        <div id="day3" class="card bg-light mb-3 mx-1 text-center flex-column"></div>
+        <div id="day4" class="card bg-light mb-3 mx-1 text-center flex-column"></div>
+        <div id="day5" class="card bg-light mb-3 mx-1 text-center flex-column"></div>
+    </div>
     <hr>
 <!--    Map of Chosen Location-->
     <div id="map"></div>
@@ -50,42 +59,79 @@
         //Tighten up
         'use strict';
 
-        //Set Location initial values for page load
+        //Set Location Values for Initial Page Load
         let coordinates = {
-            lat: 33.441792,
-            lon: -94.0
+            lat: 29.424349,
+            lon: -98.491142
         };
 
-
-        function getWeather(lat, lon){
+        function currentWeather(lat, lon){
             // Pull the Weather for Selected Location
             $.get("https://api.openweathermap.org/data/2.5/onecall?lat=" +lat +"&lon=" +lon +"&exclude=minutely,hourly&units=imperial&appid=" +OPENWEATHERMAP_TOKEN)
                 .done(function(data){
-                    return data;
+                    console.dir(data);
+
+                    $('#today').html(todaysWeather(data.current))
+
+                    mapboxgl.accessToken = MAPBOX_TOKEN_1;
+                    let map = new mapboxgl.Map({
+                        container: 'map',
+                        style: 'mapbox://styles/mapbox/streets-v11',
+                        center: [lon, lat],
+                        zoom: 10
+                    });
                 })
-
-
-
-
-            //Set the Map for Selected Location
-            mapboxgl.accessToken = MAPBOX_TOKEN_1;
-            var map = new mapboxgl.Map({
-                container: 'map',
-                style: 'mapbox://styles/mapbox/streets-v11',
-                center: [coordinates.lon, coordinates.lat],
-                zoom: 10
-            });
         }
-        getWeather(coordinates.lat, coordinates.lon)
+        currentWeather(coordinates.lat, coordinates.lon)
 
-        //Build the Weather Display
-        var weatherHTML = '';
+        // Page Building Functions
 
+        //Build the Weather Displays
+        //Current Weather
+        function todaysWeather(currentWeather){
+            const {clouds, ...rest} = currentWeather;
+            //Convert UNIX to user friendly time display
+            let displayTime = currentWeather.dt;
+            displayTime = convertUNIX(displayTime)
+            console.dir(currentWeather)
 
+            //Round temps to nearest whole number
+            let currentTemp = Math.round(currentWeather.temp)
+            let feelsLike = Math.round(currentWeather.feels_like)
+            let icon = currentWeather.weather[0].icon
+            console.log(currentTemp, feelsLike)
 
-
-
-
+            //Populate the card with wx data
+            return`
+                <div id="todayDate" class="card-header">${displayTime}</div>
+            <div class="card-body">
+                <p id="todayTemp" class="card-text">${currentTemp}&#176;</p>
+                <p id="feelsLike" class="card-text">${feelsLike}&#176;</p>
+                <hr>
+                    <div>
+                        <p id="todayWx" class="card-text">${currentWeather.weather[0].main}</p>
+                        <img src="http://openweathermap.org/img/wn/${icon}.png" alt="">
+                    </div>
+                    <hr>
+                        <p id="todayHumidity" class="card-text">${humidity}</p>
+                        <hr>
+                            <p id="todayWinds" class="card-text">Winds: From: ${wind_deg}&#176; at ${wind_speed} mph</p>
+                            <hr>
+                                <p id="todayPressure" class="card-text">Barometric pressure </br>${pressure}  *</p>
+            </div>`
+        }
+        //Convert UNIX time to User-friendly format
+        function convertUNIX(dt){
+            const options = {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            };
+            let thisTime = new Date(dt*1000);
+            thisTime = thisTime.toLocaleDateString('en-US', options);
+            return thisTime;
+        }
     })();
 </script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
